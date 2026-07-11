@@ -4,12 +4,6 @@ import re
 import nltk
 import pandas as pd
 from gensim.models import Word2Vec
-
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
