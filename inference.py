@@ -22,7 +22,6 @@ with open('label_encoder.pkl', 'rb') as f:
 
 w2v_model = Word2Vec.load('w2v_model.gensim')
 
-stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
 def clean_and_lemmatize(text):
@@ -31,6 +30,21 @@ def clean_and_lemmatize(text):
     """
     if not isinstance(text, str):
         return ""
+
+    try:
+        nltk.data.find('corpora/stopwords')
+        nltk.data.find('tokenizers/punkt')
+        nltk.data.find('corpora/wordnet')
+    except LookupError:
+        nltk.download('stopwords', quiet=True)
+        nltk.download('punkt', quiet=True)
+        nltk.download('wordnet', quiet=True)
+        nltk.download('omw-1.4', quiet=True)
+
+    from nltk.corpus import stopwords
+    from nltk.tokenize import word_tokenize
+    
+    stop_words = set(stopwords.words('english'))
         
     text = text.lower()
     text = re.sub(r'[^a-z\s]', ' ', text)  # Menyisakan huruf a-z
