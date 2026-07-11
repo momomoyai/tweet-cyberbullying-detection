@@ -4,14 +4,15 @@ import re
 import nltk
 import pandas as pd
 from gensim.models import Word2Vec
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
 
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
 
 with open('lgbm_binary.pkl', 'rb') as f:
     model_binary = pickle.load(f)
