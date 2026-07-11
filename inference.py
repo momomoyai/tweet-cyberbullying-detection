@@ -34,10 +34,12 @@ def clean_and_lemmatize(text):
     try:
         nltk.data.find('corpora/stopwords')
         nltk.data.find('tokenizers/punkt')
+        nltk.data.find('tokenizers/punkt_tab')
         nltk.data.find('corpora/wordnet')
     except LookupError:
         nltk.download('stopwords', quiet=True)
         nltk.download('punkt', quiet=True)
+        nltk.download('punkt_tab', quiet=True)
         nltk.download('wordnet', quiet=True)
         nltk.download('omw-1.4', quiet=True)
 
